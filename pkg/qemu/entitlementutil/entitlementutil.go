@@ -23,7 +23,7 @@ func IsSigned(qExe string) error {
 		return fmt.Errorf("failed to run %v: %w (out=%q)", cmd.Args, err, string(out))
 	}
 
-	cmd = exec.Command("codesign", "--display", "--entitlements", "-", "--xml", qExe)
+	cmd = exec.Command("codesign", "--display", "--entitlements", "-", qExe)
 	out, err = cmd.CombinedOutput()
 	logrus.WithError(err).Debugf("Executed %v: out=%q", cmd.Args, string(out))
 	if err != nil {
